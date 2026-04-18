@@ -1,0 +1,9 @@
+workflow:
+our database has data about  all the identified diseases, their symptoms(encoded as vector embedding) of any crop we will send to the following functions.
+there will be a fast api app that receives an image_url(the image is saved on cloudinary, call it image1) and name of crop
+this app would use the following tools:
+we will have another cloudinary account where we have 5 images of healthy crops for each crop in folders named after the crop
+then we convert image 2 and image 1 to feature vectors and compare if they are reasonably close , if so then we infer that the uploaded image is actually the crop it claims to be
+then we use a reasoning model to describe 'how exactly image 1 is different from image 2' we focus on color changes, deformation etc basically all the observable(morphological changes) changes(call it diagnosis)
+then we convert this diagnosis to a vector embedding
+then we search our db for all the diseases(and hence their symptoms)  for the crop uploaded and then we do a cosine distance check to find which disease the diagnosis matches with and we say the plant has this disease
