@@ -37,7 +37,7 @@ export default function AboutFarmers() {
       
       <main className="max-w-[1200px] mx-auto px-6 py-32 mt-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h1 className="text-[48px] md:text-[64px] font-bold leading-tight mb-6">
+          <h1 className={`text-[48px] md:text-[64px] font-bold leading-tight mb-6 transition-colors duration-500 ${isDarkTheme ? "text-white" : "text-[#1A3A1A]"}`}>
             Your smartphone is your strongest <span className="text-[#64B43C]">collateral.</span>
           </h1>
           <p className={`text-[18px] mb-8 ${isDarkTheme ? "text-white/70" : "text-[#4B5241]"}`}>
@@ -55,7 +55,7 @@ export default function AboutFarmers() {
                   <feature.icon size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[18px] mb-1">{feature.title}</h3>
+                  <h3 className={`font-bold text-[18px] mb-1 transition-colors duration-500 ${isDarkTheme ? "text-white" : "text-[#1A3A1A]"}`}>{feature.title}</h3>
                   <p className={`text-[14px] ${isDarkTheme ? "text-white/60" : "text-gray-500"}`}>{feature.desc}</p>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function AboutFarmers() {
               ].map((stat, i) => (
                 <div key={i} className={`flex justify-between p-3 rounded-[12px] ${isDarkTheme ? "bg-white/5" : "bg-gray-50"}`}>
                   <span className={`text-[13px] ${isDarkTheme ? "text-white/60" : "text-gray-500"}`}>{stat.label}</span>
-                  <span className="text-[13px] font-bold">{stat.val}</span>
+                  <span className={`text-[13px] font-bold transition-colors duration-500 ${isDarkTheme ? "text-white" : "text-[#1A3A1A]"}`}>{stat.val}</span>
                 </div>
               ))}
             </div>

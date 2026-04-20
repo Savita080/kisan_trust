@@ -64,7 +64,7 @@ export default function AboutLenders() {
         </div>
 
         <div className="order-1 lg:order-2">
-          <h1 className="text-[48px] md:text-[64px] font-bold leading-tight mb-6">
+          <h1 className={`text-[48px] md:text-[64px] font-bold leading-tight mb-6 transition-colors duration-500 ${isDarkTheme ? "text-white" : "text-[#1A3A1A]"}`}>
             Safely tap into the rural <span className="text-[#64B43C]">credit economy.</span>
           </h1>
           <p className={`text-[18px] mb-8 ${isDarkTheme ? "text-white/70" : "text-[#4B5241]"}`}>
@@ -82,7 +82,7 @@ export default function AboutLenders() {
                   <feature.icon size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[18px] mb-1">{feature.title}</h3>
+                  <h3 className={`font-bold text-[18px] mb-1 transition-colors duration-500 ${isDarkTheme ? "text-white" : "text-[#1A3A1A]"}`}>{feature.title}</h3>
                   <p className={`text-[14px] ${isDarkTheme ? "text-white/60" : "text-gray-500"}`}>{feature.desc}</p>
                 </div>
               </div>
