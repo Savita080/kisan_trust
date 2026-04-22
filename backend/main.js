@@ -18,8 +18,13 @@ import Message from "./models/message_model.js";
 connectDB();
 const app = express();
 
+const corsOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
+if (process.env.FRONTEND_URL) {
+    corsOrigins.push(process.env.FRONTEND_URL);
+}
+
 app.use(cors({
-    origin: (origin, callback) => callback(null, true),
+    origin: corsOrigins,
     credentials: true,
 }));
 app.use(express.json());
@@ -45,7 +50,7 @@ app.get("/", (req, res) => {
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: (origin, callback) => callback(null, true),
+        origin: corsOrigins,
         credentials: true,
     },
 });
@@ -71,7 +76,7 @@ const onlineUsers = new Map(); // id -> socketId
 io.on("connection", (socket) => {
     const { userId, userRole } = socket;
     const roomId = `${userRole}_${userId}`;
-    
+
     // Join personal room
     socket.join(roomId);
     onlineUsers.set(userId, socket.id);
