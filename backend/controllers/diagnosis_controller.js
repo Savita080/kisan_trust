@@ -236,7 +236,8 @@ export const createDiagnosis = async (req, res) => {
         return res.status(201).json(responseData);
 
     } catch (error) {
-        console.log(error);
+        console.error("DIAGNOSIS ERROR:", error.message || error);
+        if (error.stack) console.error(error.stack);
         return res.status(500).json({ message: "Internal Server Error" });
     }
 };
@@ -457,7 +458,8 @@ export const createFollowUp = async (req, res) => {
         return res.status(201).json(responseData);
 
     } catch (error) {
-        console.log(error);
+        console.error("FOLLOWUP ERROR:", error.message || error);
+        if (error.stack) console.error(error.stack);
         return res.status(500).json({ message: "Internal Server Error" });
     }
 };
