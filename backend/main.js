@@ -18,14 +18,8 @@ import Message from "./models/message_model.js";
 connectDB();
 const app = express();
 
-const corsOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
-if (process.env.FRONTEND_URL) {
-    const origin = process.env.FRONTEND_URL.replace(/\/$/, "");
-    corsOrigins.push(origin);
-}
-
 app.use(cors({
-    origin: corsOrigins,
+    origin: (origin, callback) => callback(null, true),
     credentials: true,
 }));
 app.use(express.json());
@@ -51,7 +45,7 @@ app.get("/", (req, res) => {
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: corsOrigins,
+        origin: (origin, callback) => callback(null, true),
         credentials: true,
     },
 });
